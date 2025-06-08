@@ -81,20 +81,27 @@ html_content = """<!DOCTYPE html>
     <div id='response' class='response'>Awaiting input...</div>
   </div>
 
-  <script>
-    async function sendQuery() {
-      const input = document.getElementById('userInput').value;
-      document.getElementById('response').innerText = 'Processing...';
+<script>
+  async function sendQuery() {
+    const input = document.getElementById('userInput').value;
+    document.getElementById('response').innerText = 'Processing...';
+    console.log("SendQuery triggered with input:", input); // DEBUG LOG
 
+    try {
       const res = await fetch('/query', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ input: input })
       });
+
       const data = await res.json();
       document.getElementById('response').innerText = data.response + '\n\nT. Feynman [D4S/INT-L1]\nCognitive Architecture – Durante Space Tech';
+    } catch (err) {
+      console.error("Fetch error:", err); // DEBUG LOG
+      document.getElementById('response').innerText = "⚠️ Error: " + err;
     }
-  </script>
+  }
+</script>
 </body>
 </html>"""
 
