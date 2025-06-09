@@ -1,9 +1,8 @@
 from flask import Flask, request, jsonify, render_template_string
 from flask_cors import CORS
 import openai
-import os
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = "sk-test-TEMPORARY-KEY-1234567890"
 
 app = Flask(__name__)
 CORS(app)
@@ -93,10 +92,10 @@ html_content = """<!DOCTYPE html>
           body: JSON.stringify({ input: input })
         });
         const data = await res.json();
-        document.getElementById('response').innerText = data.response + '\\n\\nT. Feynman [D4S/INT-L1]\\nCognitive Architecture – Durante Space Tech';
+        document.getElementById('response').innerText = data.response + '\n\nT. Feynman [D4S/INT-L1]\nCognitive Architecture â Durante Space Tech';
       } catch (err) {
         console.error("Fetch error:", err); // DEBUG
-        document.getElementById('response').innerText = "⚠️ Error: " + err;
+        document.getElementById('response').innerText = "â ï¸ Error: " + err;
       }
     }
   </script>
