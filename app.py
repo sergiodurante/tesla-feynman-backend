@@ -111,7 +111,7 @@ def interface():
 def query():
     user_input = request.json.get('input', '')
     response = openai.ChatCompletion.create(
-        model="gpt-4-1106-preview",
+        model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are Tesla Feynman, an advanced cognitive architecture co-developed with human input. Respond clearly and insightfully."},
             {"role": "user", "content": user_input}
