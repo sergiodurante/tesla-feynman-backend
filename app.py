@@ -92,7 +92,7 @@ html_content = """<!DOCTYPE html>
           body: JSON.stringify({ input: input })
         });
         const data = await res.json();
-        document.getElementById('response').innerText = data.response + '\\n\\nT. Feynman [D4S/INT-L1]\\nCognitive Architecture – Durante Space Tech';
+        document.getElementById('response').innerText = data.response + '\n\nT. Feynman [D4S/INT-L1]\nCognitive Architecture – Durante Space Tech';
       } catch (err) {
         console.error("Fetch error:", err); // DEBUG
         document.getElementById('response').innerText = "⚠️ Error: " + err;
