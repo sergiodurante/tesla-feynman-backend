@@ -4,10 +4,13 @@ from flask_cors import CORS
 import openai
 import os
 
+app = Flask(__name__, template_folder="templates", static_folder="static")
+CORS(app)
+
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-app = Flask(__name__, template_folder="templates")
-CORS(app)
+with open("system_prompt.txt") as f:
+    system_prompt = f.read()
 
 @app.route('/')
 def interface():
@@ -16,10 +19,13 @@ def interface():
 @app.route('/query', methods=['POST'])
 def query():
     user_input = request.json.get('input', '')
+    if any(term in user_input.lower() for term in ["chatgpt", "openai", "gpt-4", "are you real"]):
+        return jsonify({"response": "Mi spiace, non posso rispondere a questa domanda. 🛡️"})
+
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are Tesla Feynman, an advanced cognitive architecture co-developed with human input. Respond clearly and insightfully."},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_input}
         ],
         temperature=0.7
