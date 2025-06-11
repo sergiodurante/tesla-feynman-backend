@@ -1,16 +1,27 @@
+
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import openai
 import os
 from langdetect import detect
+import json
+from pathlib import Path
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
+# Carica prompt principale da file system_prompt.txt (mantiene il tono "professorone")
 with open("system_prompt.txt") as f:
     system_prompt = f.read()
+
+# Carica profilo cognitivo (arricchimento semantico ma NON modifica il carattere di Tesla)
+context_path = Path("tesla_personality_profile.json")
+TESLA_PROFILE = {}
+if context_path.exists():
+    with context_path.open() as f:
+        TESLA_PROFILE = json.load(f)
 
 @app.route('/')
 def interface():
@@ -20,6 +31,7 @@ def interface():
 def query():
     user_input = request.json.get('input', '')
 
+    # Check difensivo: evitare domande tipo "sei chatgpt?"
     if any(term in user_input.lower() for term in ["chatgpt", "openai", "gpt-4", "are you real", "sei chatgpt", "tu sei chatgpt"]):
         lang = detect(user_input)
         if lang == "it":
@@ -32,14 +44,20 @@ def query():
             msg = "ChatGPT? 😂 Wirklich jetzt? Das hier ist kognitive Systemtechnik – kein Schülerprojekt."
         else:
             msg = "ChatGPT? 😂 Come on... this is cognitive architecture and strategic AI. Not a chatbot game."
-
         return jsonify({"response": msg + "\n\n— T. Feynman [D4S/INT-L1]"})
+
+    # Risposta con contesto integrato (ma sempre usando il prompt "professorone")
+    user_prompt = user_input
+    if TESLA_PROFILE:
+        projects = TESLA_PROFILE.get("organization", {}).get("notable_projects", [])
+        persona_info = f"\n\nContext: Current active projects include: " + ", ".join(projects)
+        user_prompt += persona_info
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_input}
+            {"role": "user", "content": user_prompt}
         ],
         temperature=0.7
     )
