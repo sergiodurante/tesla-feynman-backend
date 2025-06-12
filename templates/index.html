@@ -56,12 +56,20 @@
       margin-top: 3rem;
       text-align: center;
     }
-    footer img {
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .footer-logos img {
       height: 70px;
       margin: 0.5rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .footer-logos img:hover {
+      transform: scale(1.05);
     }
     .home-link {
       position: absolute;
@@ -69,9 +77,9 @@
       right: 20px;
     }
     .home-link img {
-      width: 140px;
+      width: 280px;
       height: auto;
-      opacity: 0.9;
+      opacity: 0.95;
     }
   </style>
 </head>
@@ -92,8 +100,14 @@
   </div>
 
   <footer>
-    <img src="/static/logo_tesla.png" alt="Tesla Feynman Logo"/>
-    <img src="/static/logo_d4s.png" alt="Durante Space Tech Logo"/>
+    <div class="footer-logos">
+      <a href="https://sergiodurante.com/tesla-feynman-ai-human-intelligence/" target="_blank">
+        <img src="/static/logo_tesla.png" alt="Tesla Feynman Logo"/>
+      </a>
+      <a href="https://www.d4s.es" target="_blank">
+        <img src="/static/logo_d4s.png" alt="Durante Space Tech Logo"/>
+      </a>
+    </div>
   </footer>
 
   <script>
