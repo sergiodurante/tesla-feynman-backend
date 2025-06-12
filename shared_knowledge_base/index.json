@@ -1,0 +1,25 @@
+{
+    "SOLARIA_summary.txt": {
+        "title": "SOLARIA project summary",
+        "tags": [
+            "solar",
+            "energy",
+            "conversion",
+            "project",
+            "TRL"
+        ],
+        "language": "en",
+        "summary": "Overview of the SOLARIA energy platform with TRL goals and partner countries."
+    },
+    "glossary_terms.json": {
+        "title": "Glossary of technical terms",
+        "tags": [
+            "glossary",
+            "definitions",
+            "terms",
+            "TRL"
+        ],
+        "language": "en",
+        "summary": "Definitions of key technical terms used in D4S projects."
+    }
+}
