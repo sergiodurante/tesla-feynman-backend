@@ -6,6 +6,7 @@ import os
 from langdetect import detect
 import json
 from pathlib import Path
+from vault_reader import query_vault
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)
@@ -16,7 +17,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 with open("system_prompt.txt") as f:
     system_prompt = f.read()
 
-# Carica profilo cognitivo (arricchimento semantico ma NON modifica il carattere di Tesla)
+# Carica profilo cognitivo
 context_path = Path("tesla_personality_profile.json")
 TESLA_PROFILE = {}
 if context_path.exists():
@@ -52,6 +53,11 @@ def query():
         projects = TESLA_PROFILE.get("organization", {}).get("notable_projects", [])
         persona_info = f"\n\nContext: Current active projects include: " + ", ".join(projects)
         user_prompt += persona_info
+
+    # Integrazione Vault
+    vault_result = query_vault(user_input)
+    if vault_result:
+        user_prompt += "\n\nRelevant knowledge from internal project documentation:\n" + vault_result.strip()
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
