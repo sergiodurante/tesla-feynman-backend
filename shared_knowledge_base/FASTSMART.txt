@@ -1,0 +1,3 @@
+FASTSMART – Hybrid Rally Car with Energy Harvesting
+
+FASTSMART designed the first rally car with embedded energy harvesting systems (since 2017), focused on motorsport innovation and TRL demonstration under Horizon 2020.

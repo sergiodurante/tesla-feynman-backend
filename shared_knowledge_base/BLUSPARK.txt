@@ -1,0 +1,3 @@
+BLUSPARK – Urban Smart Sensor Networks for Air Quality and Public Safety
+
+BLUSPARK deploys AI-enhanced smart sensors in urban environments to monitor air quality, noise, movement patterns and support emergency services and city management.

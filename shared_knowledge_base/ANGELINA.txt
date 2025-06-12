@@ -1,0 +1,3 @@
+ANGELINA – AI-Based Respiratory Diagnostic Device
+
+ANGELINA is an AI-powered diagnostic tool for respiratory conditions, based on digital auscultation, real-time processing, and digital twin modeling.

@@ -1,25 +1,86 @@
 {
-    "SOLARIA_summary.txt": {
-        "title": "SOLARIA project summary",
+    "SOLARIA.txt": {
+        "title": "SOLARIA \u2013 Solar-to-X Energy Conversion Platform",
+        "summary": "SOLARIA develops a next-gen solar-to-X platform converting solar energy into electricity, heat, and hydrogen. Targets TRL 6 in 30 months. Partners in Spain and Italy.",
         "tags": [
             "solar",
             "energy",
-            "conversion",
-            "project",
-            "TRL"
+            "TRL",
+            "hydrogen",
+            "conversion"
         ],
-        "language": "en",
-        "summary": "Overview of the SOLARIA energy platform with TRL goals and partner countries."
+        "language": "en"
     },
-    "glossary_terms.json": {
-        "title": "Glossary of technical terms",
+    "FASTSMART.txt": {
+        "title": "FASTSMART \u2013 Hybrid Rally Car with Energy Harvesting",
+        "summary": "FASTSMART designed the first rally car with embedded energy harvesting systems (since 2017), focused on motorsport innovation and TRL demonstration under Horizon 2020.",
         "tags": [
-            "glossary",
-            "definitions",
-            "terms",
+            "rally",
+            "hybrid",
+            "motorsport",
+            "energy harvesting",
             "TRL"
         ],
-        "language": "en",
-        "summary": "Definitions of key technical terms used in D4S projects."
+        "language": "en"
+    },
+    "ANGELINA.txt": {
+        "title": "ANGELINA \u2013 AI-Based Respiratory Diagnostic Device",
+        "summary": "ANGELINA is an AI-powered diagnostic tool for respiratory conditions, based on digital auscultation, real-time processing, and digital twin modeling.",
+        "tags": [
+            "AI",
+            "diagnostic",
+            "respiratory",
+            "digital twin",
+            "healthtech"
+        ],
+        "language": "en"
+    },
+    "M2DESCO.txt": {
+        "title": "M2DESCO \u2013 Nanostructured Coatings for Cutting Tools and Tribological Components",
+        "summary": "M2DESCO focuses on innovative nanocoatings for high-performance cutting tools and tribological parts in automotive and aerospace applications.",
+        "tags": [
+            "coatings",
+            "nanotech",
+            "tribology",
+            "cutting tools",
+            "aerospace"
+        ],
+        "language": "en"
+    },
+    "BIONANOCOMP.txt": {
+        "title": "BIONANOCOMP \u2013 Biodegradable and Self-Healing Nanocomposites",
+        "summary": "Development of sustainable bio-nanocomposites for automotive/aerospace: self-healing surfaces, biodegradable matrices, and digital twin integration for simulation.",
+        "tags": [
+            "biocomposites",
+            "nanotech",
+            "self-healing",
+            "sustainability",
+            "automotive"
+        ],
+        "language": "en"
+    },
+    "BLUSPARK.txt": {
+        "title": "BLUSPARK \u2013 Urban Smart Sensor Networks for Air Quality and Public Safety",
+        "summary": "BLUSPARK deploys AI-enhanced smart sensors in urban environments to monitor air quality, noise, movement patterns and support emergency services and city management.",
+        "tags": [
+            "sensors",
+            "urban",
+            "air quality",
+            "smart city",
+            "public safety"
+        ],
+        "language": "en"
+    },
+    "BiSMART.txt": {
+        "title": "BiSMART \u2013 Biodegradable Smart Materials for Automotive and Circular Manufacturing",
+        "summary": "BiSMART explores smart biodegradable materials for structural and aesthetic automotive parts, with high-performance targets and circular design principles.",
+        "tags": [
+            "biodegradable",
+            "automotive",
+            "circular economy",
+            "materials",
+            "smart"
+        ],
+        "language": "en"
     }
 }
