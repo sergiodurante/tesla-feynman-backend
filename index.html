@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tesla Feynman | Strategic Cognitive Interface</title>
+  <link rel="icon" type="image/png" href="/static/favicon.png"/>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 2rem;
+      position: relative;
+    }
+    h1 {
+      font-size: 1.6rem;
+      color: #66ccff;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+    }
+    #interface {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .label {
+      margin-top: 2rem;
+      font-weight: bold;
+      color: #999;
+    }
+    textarea, .response {
+      width: 100%;
+      background-color: #1a1a1a;
+      color: #f1f1f1;
+      border: 1px solid #333;
+      padding: 1rem;
+      margin-top: 0.5rem;
+      resize: vertical;
+      font-size: 1rem;
+    }
+    .response {
+      min-height: 150px;
+      white-space: pre-wrap;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      background-color: #222;
+      color: #66ccff;
+      border: 1px solid #444;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .footer-logos img {
+      height: 70px;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .footer-logos img:hover {
+      transform: scale(1.05);
+    }
+    .home-link {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .home-link img {
+      width: 280px;
+      height: auto;
+      opacity: 0.95;
+    }
+  </style>
+</head>
+<body>
+  <a href="https://www.sergiodurante.com" target="_blank" class="home-link">
+    <img src="/static/sergio_durante_logo.png" alt="Sergio Durante Logo"/>
+  </a>
+
+  <div id="interface">
+    <h1>Tesla Feynman [D4S/INT-L1]<br>Strategic Cognitive Interface</h1>
+
+    <div class="label">Input:</div>
+    <textarea id="userInput" placeholder="Enter your query, observation or scenario..."></textarea>
+    <button onclick="sendQuery()">Ask Tesla</button>
+
+    <div class="label">Response:</div>
+    <div id="response" class="response">Awaiting input...</div>
+  </div>
+
+  <footer>
+    <div class="footer-logos">
+      <a href="https://sergiodurante.com/tesla-feynman-ai-human-intelligence/" target="_blank">
+        <img src="/static/logo_tesla.png" alt="Tesla Feynman Logo"/>
+      </a>
+      <a href="https://www.d4s.es" target="_blank">
+        <img src="/static/logo_d4s.png" alt="Durante Space Tech Logo"/>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    async function sendQuery() {
+      const input = document.getElementById("userInput").value;
+      document.getElementById("response").innerText = "Processing...";
+      console.log("SendQuery triggered with input:", input);
+
+      try {
+        const res = await fetch("/query", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ input: input })
+        });
+        const data = await res.json();
+        document.getElementById("response").innerText =
+          data.response + "\n\n— T. Feynman [D4S/INT-L1]\nCognitive Architecture – Durante Space Tech";
+      } catch (err) {
+        console.error("Fetch error:", err);
+        document.getElementById("response").innerText = "⚠️ Error: " + err;
+      }
+    }
+  </script>
+</body>
+</html>
