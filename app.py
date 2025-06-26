@@ -30,6 +30,8 @@ def interface():
 
 @app.route('/query', methods=['POST'])
 def query():
+    from datetime import datetime
+    today = datetime.today().strftime("%d %B %Y")
     user_input = request.json.get('input', '')
 
     # Check difensivo: evitare domande tipo "sei chatgpt?"
@@ -53,6 +55,7 @@ def query():
         projects = TESLA_PROFILE.get("organization", {}).get("notable_projects", [])
         persona_info = f"\n\nContext: Current active projects include: " + ", ".join(projects)
         user_prompt += persona_info
+        user_prompt += f"\n\nCurrent date: {today}"
 
     # Integrazione Vault
     vault_result = query_vault(user_input)
