@@ -82,6 +82,15 @@ def query():
         user_prompt += f"\n\nCurrent date: {today}"
 
     vault_result = query_vault(user_input)
+    from vault_reader import lookup_call_status
+    call_info = lookup_call_status(user_input)
+    if call_info:
+        user_prompt += (
+            f"\\n\\n[HORIZON STATUS] "
+            f"The topic *{call_info['topic_id']}* "
+            f'({call_info["topic"]}) is currently **{call_info["status"]}**. '
+            f"Deadline: **{call_info['deadline']}**."
+        )
     if vault_result:
         user_prompt += "\n\nRelevant knowledge from internal project documentation:\n" + vault_result.strip()
 
