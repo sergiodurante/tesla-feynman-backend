@@ -83,7 +83,8 @@ def query():
 
     vault_result = query_vault(user_input)
     from vault_reader import lookup_call_status
-    call_info = lookup_call_status(user_input)
+    query_clean = user_input.lower().replace("fusione nucleare", "fusion").replace("intelligenza artificiale", "AI").replace("biodiversità", "biodiversity")
+    call_info = lookup_call_status(query_clean)
     if call_info:
         user_prompt += (
             f"\n\n[HORIZON STATUS] "
