@@ -42,3 +42,24 @@ def query_vault(keyword, max_results=3):
     else:
         print("🤖 [Vault] No results found.")
         return ""
+def lookup_call_status(query_term):
+    status_file = os.path.join(VAULT_PATH, "calls_status.json")
+    if not os.path.exists(status_file):
+        return None
+
+    try:
+        with open(status_file, "r") as f:
+            calls_data = json.load(f)
+
+        for call_code, call_info in calls_data.items():
+            if query_term.lower() in call_info["topic"].lower():
+                return {
+                    "code": call_code,
+                    "topic_id": call_info["topic_id"],
+                    "deadline": call_info["deadline"],
+                    "status": call_info["status"]
+                }
+        return None
+    except Exception as e:
+        print(f"❌ Error reading calls_status.json: {e}")
+        return None
