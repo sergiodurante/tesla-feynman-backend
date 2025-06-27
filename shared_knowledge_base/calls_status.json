@@ -1,0 +1,20 @@
+{
+  "CL5-2025-01": {
+    "topic": "Nuclear fusion demonstrators",
+    "topic_id": "HORIZON-CL5-2025-D3-01-15",
+    "deadline": "2025-09-17",
+    "status": "open"
+  },
+  "CL4-2025-02": {
+    "topic": "Advanced AI in manufacturing",
+    "topic_id": "HORIZON-CL4-2025-DIGITAL-01-02",
+    "deadline": "2025-10-03",
+    "status": "open"
+  },
+  "CL6-2025-03": {
+    "topic": "Biodiversity, agroecology and food systems resilience",
+    "topic_id": "HORIZON-CL6-2025-BIODIV-01-01",
+    "deadline": "2025-09-10",
+    "status": "open"
+  }
+}
