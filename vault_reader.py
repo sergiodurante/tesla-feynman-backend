@@ -45,20 +45,28 @@ def query_vault(keyword, max_results=3):
 def lookup_call_status(query_term):
     status_file = os.path.join(VAULT_PATH, "calls_status.json")
     if not os.path.exists(status_file):
+        print("❌ [Call Status] calls_status.json not found.")
         return None
 
     try:
         with open(status_file, "r") as f:
             calls_data = json.load(f)
 
+        query_tokens = set(query_term.lower().split())
+
         for call_code, call_info in calls_data.items():
-            if query_term.lower() in call_info["topic"].lower():
+            topic_tokens = set(call_info["topic"].lower().split())
+            if query_tokens & topic_tokens:  # match if they share at least one word
+                print(f"✅ [Call Status] Match found in topic: {call_info['topic']}")
                 return {
                     "code": call_code,
+                    "topic": call_info["topic"],
                     "topic_id": call_info["topic_id"],
                     "deadline": call_info["deadline"],
                     "status": call_info["status"]
                 }
+
+        print(f"❌ [Call Status] No match found for: '{query_term}'")
         return None
     except Exception as e:
         print(f"❌ Error reading calls_status.json: {e}")
