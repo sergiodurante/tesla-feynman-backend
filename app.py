@@ -86,7 +86,7 @@ def query():
     call_info = lookup_call_status(user_input)
     if call_info:
         user_prompt += (
-            f"\\n\\n[HORIZON STATUS] "
+            f"\n\n[HORIZON STATUS] "
             f"The topic *{call_info['topic_id']}* "
             f'({call_info["topic"]}) is currently **{call_info["status"]}**. '
             f"Deadline: **{call_info['deadline']}**."
