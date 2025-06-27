@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Tesla Feynman</title>
+  <link rel="icon" type="image/png" href="/static/favicon.png"/>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 1.6rem;
+      color: #66ccff;
+      text-align: center;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+    }
+    form {
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      border: 1px solid #333;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #999;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.3rem;
+      background-color: #0f0f0f;
+      border: 1px solid #444;
+      color: #e0e0e0;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      background-color: #222;
+      color: #66ccff;
+      border: 1px solid #444;
+      cursor: pointer;
+      width: 100%;
+    }
+    .error {
+      color: #ff4d4d;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .footer-logos {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .footer-logos img {
+      height: 70px;
+      margin: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .footer-logos img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>Tesla Feynman [D4S/INT-L1] – Login</h1>
+  <form method="post">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" required/>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required/>
+
+    <button type="submit">🔓 Entra</button>
+
+    {% if error %}
+      <div class="error">Accesso negato. Verifica le credenziali.</div>
+    {% endif %}
+  </form>
+
+  <div class="footer-logos">
+    <a href="https://sergiodurante.com/tesla-feynman-ai-human-intelligence/" target="_blank">
+      <img src="/static/logo_tesla.png" alt="Tesla Feynman Logo"/>
+    </a>
+    <a href="https://www.d4s.es" target="_blank">
+      <img src="/static/logo_d4s.png" alt="Durante Space Tech Logo"/>
+    </a>
+  </div>
+</body>
+</html>
